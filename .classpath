@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="com/jigsaw/mybatis/mapper/|com/jigsaw/mybatis/mapper/" kind="src" path="src"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-aop-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-aspects-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-beans-4.1.6.RELEASE.jar" sourcepath="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-beans-4.1.6.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-context-4.1.6.RELEASE.jar" sourcepath="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-context-4.1.6.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-context-support-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-core-4.1.6.RELEASE.jar" sourcepath="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-core-4.1.6.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-expression-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-instrument-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-instrument-tomcat-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-jdbc-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-jms-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-messaging-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-orm-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-oxm-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-test-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-tx-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-web-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-webmvc-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-webmvc-portlet-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/spring-framework-4.1.6.RELEASE/libs/spring-websocket-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aspectj/aspectj-1.8.10.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aspectj/aspectjrt.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aspectj/aspectjtools.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aspectj/aspectjweaver.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/aspectj/org.aspectj.matcher.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/servlet-api.jar" sourcepath="F:/JavaWeb/servlet-api-2.5-sources.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/mybatis-3.4.5.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="F:/JavaWeb/mybatis-spring-1.2.3.jar" sourcepath="F:/JavaWeb/mybatis-spring-1.2.3-sources.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

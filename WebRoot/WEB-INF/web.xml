@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>MyBatisServlet</servlet-name>
+		<servlet-class>com.jigsaw.mybatis.MyBatisServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>LifeServlet</servlet-name>
+		<servlet-class>com.jigsaw.helloworld.LifeServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Hello</servlet-name>
+		<servlet-class>com.jigsaw.helloworld.Hello</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Json</servlet-name>
+		<servlet-class>com.jigsaw.helloworld.Json</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>WeixinWebServlet</servlet-name>
+		<servlet-class>com.jigsaw.helloworld.WeixinWebServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>HelloMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyBatisServlet</servlet-name>
+		<url-pattern>/mybatis</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LifeServlet</servlet-name>
+		<url-pattern>/LifeServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>HelloMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/servlet/Hello</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Json</servlet-name>
+		<url-pattern>/servlet/getJson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WeixinWebServlet</servlet-name>
+		<url-pattern>/WeixinWebServlet</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
+

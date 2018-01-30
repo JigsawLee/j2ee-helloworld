@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jigsaw.mybatis.dao.CommentDao">
+	<select id="selectCommentByContent"  resultType="Comment">
+		select * FROM
+		comment
+		WHERE id>0
+		<if test="value!=null">
+			AND content LIKE '%${value}%'
+		</if>
+	</select>
+	<select id="selectComment" resultType="Comment">
+		select * FROM
+		comment
+		WHERE id>0
+		<!-- 相当swich case 分支结构 只能匹配其中一个 -->
+		<choose>
+			<when test="author!=null and author.id!=null and author.id!=0">
+				AND author = #{author.id}
+			</when>
+			<!-- int 类型 默认值为0 -->
+			<when test="id!=null and id!=0">
+				and id = #{id}
+			</when>
+			<when test="article!=null and article.id !=null and article.id != 0">
+				and article = #{article.id}
+			</when>
+			<otherwise>
+
+			</otherwise>
+		</choose>
+	</select>
+	<select id="selectComment4TestWhere" resultType="Comment">
+		select * FROM
+		comment
+		<!-- where 可避免author为空时，where and xx的错误 -->
+		<!-- 如果标签内部没有合适的语句，where标签就不会生成任何东西，防止出现错误语句。 -->
+		<where>
+			<if test="author!=null and author.id!=null and author.id!=0">
+				author = #{author.id}
+			</if>
+			<!-- int 类型 默认值为0 -->
+			<if test="id!=null and id!=0">
+				and id = #{id}
+			</if>
+			<if test="article!=null and article.id !=null and article.id != 0">
+				and article = #{article.id}
+			</if>
+		</where>
+	</select>
+	<select id="selectComment4TestOverrideWhere" resultType="Comment">
+		select * FROM
+		comment
+		<!-- prefix 前缀 ， 遇到prefixOverrides或suffixOverrides属性中指定的值，MyBatis会自动将它们删除 -->
+		<!-- 如果标签内部没有合适的语句，trim标签就不会生成任何东西，防止出现错误语句。 -->
+		<trim prefix="WHERE " prefixOverrides="AND |OR ">
+			<if test="author!=null and author.id!=null and author.id!=0">
+				author = #{author.id}
+			</if>
+			<!-- int 类型 默认值为0 -->
+			<if test="id!=null and id!=0">
+				and id = #{id}
+			</if>
+			<if test="article!=null and article.id !=null and article.id != 0">
+				and article = #{article.id}
+			</if>
+		</trim>
+	</select>
+	<update id="updateComment">
+		UPDATE comment
+		<!-- 自动忽略 ， 拼接错误 -->
+		<set>
+			<if test="id!=null and id != 0">id=#{id},</if>
+			<if test="content!=null">content=#{content},</if>
+		</set>
+		WHERE id =#{id}
+	</update>
+</mapper>

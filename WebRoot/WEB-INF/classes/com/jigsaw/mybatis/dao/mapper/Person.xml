@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jigsaw.mybatis.dao.PersonDao">
+	<select id="selectPerson" resultType="Person" parameterType="Person">
+		SELECT *
+		FROM Person
+		WHERE id = #{id}
+	</select>
+	<select id="selectPersonByAddress" resultType="Person">
+		SELECT *
+		FROM
+		Person
+		WHERE address = #{address} LIMIT 1
+	</select>
+	<select id="selectPersonById" resultType="Person">
+		SELECT *
+		FROM
+		Person
+		WHERE id = #{id}
+	</select>
+	<insert id="insertPerson" useGeneratedKeys="true">
+		INSERT INTO Person
+		(address, city) VALUES (#{address}, #{city})
+	</insert>
+	<update id="updatePerson">
+		UPDATE Person
+		SET address = #{address}
+		WHERE id =
+		#{id}
+	</update>
+	<delete id="deletePerson">
+		DELETE FROM Person
+		WHERE address = #{address}
+	</delete>
+</mapper>

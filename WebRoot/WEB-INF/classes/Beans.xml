@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+	<context:annotation-config />
+	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。 -->
+	<context:component-scan base-package="com.jigsaw">
+		<!-- base-package 如果多个，用“,”分隔 -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<aop:config>
+		<aop:aspect id="log" ref="logging">
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.tutorialspoint.*.*(..))" />
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+			<aop:after-returning pointcut-ref="selectAll"
+				returning="retVal" method="afterReturningAdvice" />
+		</aop:aspect>
+	</aop:config>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/w3school" />
+		<property name="username" value="root" />
+		<property name="password" value="123" />
+	</bean>
+	<!-- mybatis start -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="mybatis-config.xml"></property>
+		<property name="mapperLocations"
+			value="classpath:/com/jigsaw/mybatis/dao/mapper/**/*.xml" />
+	</bean>
+	<!-- 事务管理器 什么作用啊？ -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- dao 扫描路径 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jigsaw.mybatis.dao.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="annotationClass" value="com.jigsaw.mybatis.MyBatisDao" />
+
+	</bean>
+	<!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+	<!-- mybatis end -->
+	<bean id="studentJDBCTemplate" class="com.tutorialspoint.jdbc.StudentJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="beanTeamplate" abstract="true">
+		<property name="message" value="message"></property>
+		<property name="message1" value="message1111"></property>
+	</bean>
+	<bean id="helloChinese" class="com.tutorialspoint.HelloChinese"
+		parent="beanTeamplate">
+		<property name="message1" value="Hello Chinese!" />
+	</bean>
+	<bean id="textEditor" class="com.tutorialspoint.editor.TextEditor">
+	</bean>
+	<bean class="com.tutorialspoint.editor.SpellChecker"></bean>
+	<bean id="javaCollection" class="com.tutorialspoint.JavaCollection">
+		<property name="addressList">
+			<list>
+				<value>China</value>
+				<value>INDIA</value>
+				<value>Pakistan</value>
+			</list>
+		</property>
+		<property name="addressSet">
+			<set>
+				<value>China</value>
+				<value>INDIA</value>
+				<value>Pakistan</value>
+				<value>USA</value>
+			</set>
+		</property>
+		<property name="addressMap">
+			<map>
+				<entry key="1" value="INDIA" />
+				<entry key="2" value="Pakistan" />
+				<entry key="3" value="USA" />
+				<entry key="4" value="USA" />
+			</map>
+		</property>
+		<property name="addressProp">
+			<props>
+				<prop key="one">ONE</prop>
+				<prop key="two">TWO</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="student" class="com.tutorialspoint.Student">
+		<property name="age" value="18"></property>
+		<property name="name" value="Jigsaw"></property>
+	</bean>
+	<bean id="student1" class="com.tutorialspoint.Student">
+		<property name="age" value="88"></property>
+		<property name="name" value="Jigsaw"></property>
+	</bean>
+	<bean class="com.tutorialspoint.ProFile"></bean>
+	<bean id="customEventPublisher" class="com.tutorialspoint.event.CustomEventPublisher"></bean>
+	<bean id="customEventHandler" class="com.tutorialspoint.event.CustomEventHandler"></bean>
+
+	<bean id="logging" class="com.tutorialspoint.aop.Logging"></bean>
+</beans>

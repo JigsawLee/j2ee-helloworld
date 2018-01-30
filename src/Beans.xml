@@ -3,10 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+    http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 	<context:annotation-config />
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。 -->
 	<context:component-scan base-package="com.jigsaw">
@@ -36,7 +38,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="mybatis-config.xml"></property>
 		<property name="mapperLocations"
-			value="classpath:/com/jigsaw/mybatis/dao/mapper/**/*.xml" />
+			value="classpath:/com/jigsaw/mybatis/mapper/**/*.xml" />
 	</bean>
 	<!-- 事务管理器 什么作用啊？ -->
 	<bean id="transactionManager"
@@ -45,14 +47,15 @@
 	</bean>
 	<!-- dao 扫描路径 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.jigsaw.mybatis.dao.mapper" />
+		<property name="basePackage" value="com.jigsaw.mybatis.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="annotationClass" value="com.jigsaw.mybatis.MyBatisDao" />
-
+		<!-- <property name="annotationClass" value="com.jigsaw.mybatis.MyBatisDao" 
+			/> -->
 	</bean>
 	<!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
+	<!-- <mybatis:scan base-package="com.jigsaw.mybatis.dao" /> -->
 	<!-- mybatis end -->
 	<bean id="studentJDBCTemplate" class="com.tutorialspoint.jdbc.StudentJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />

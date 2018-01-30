@@ -59,9 +59,5 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<mappers>
-		<mapper resource="com/jigsaw/mybatis/dao/mapper/Person.xml" />
-		<mapper resource="com/jigsaw/mybatis/dao/mapper/Article.xml" />
-		<mapper resource="com/jigsaw/mybatis/dao/mapper/Comment.xml" />
-	</mappers>
+	
 </configuration>

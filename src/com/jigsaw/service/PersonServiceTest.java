@@ -13,7 +13,7 @@ public class PersonServiceTest {
 	@Test
 	public void testSelectPersonById() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-		PersonService service = context.getBean(PersonService.class);
+		PersonService service = (PersonService) context.getBean("personService");
 		assertNotNull(service.selectPersonById(1));
 	}
 

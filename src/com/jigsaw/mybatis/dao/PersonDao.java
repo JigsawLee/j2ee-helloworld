@@ -1,9 +1,10 @@
 package com.jigsaw.mybatis.dao;
 
+import org.springframework.stereotype.Repository;
+
 import com.jigsaw.mybatis.MyBatisDao;
 import com.jigsaw.mybatis.bean.Person;
 
-@MyBatisDao
 public interface PersonDao {
 	Person selectPersonById(int id);
 

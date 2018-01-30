@@ -19,10 +19,10 @@ public class MyBatisServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:Beans.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		PersonService service = context.getBean(PersonService.class);
 		if (null != service) {
-
+			
 		}
 		System.out.println(service);
 		System.out.println("doGet");
